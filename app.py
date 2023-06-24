@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -18,9 +18,11 @@ def pojisteni():
 def oaplikaci():
     return render_template('oaplikaci.html', page_title = 'O aplikaci')
 
-@app.route('/pojistenci/detail/<index>')
-def pojistenci_detail(index):
-    return '<h1>pojistenci detail {}!</h1>'.format(index)
+@app.route('/pojistenci/detail/<id>', methods = ['POST', 'GET'])
+def pojistenci_detail(id):
+    if request.method == 'POST':
+        return '<h1>request methods is working!</h1>'
+    return render_template('pojistenec_detail.html', page_title='Pojištěnec {}'.format(id))
 
 @app.route('/pojistenci/novy')
 def pojistenci_novy():
