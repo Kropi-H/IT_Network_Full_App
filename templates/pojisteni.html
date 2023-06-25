@@ -3,55 +3,76 @@
 {% block body %}
 
 <div class="container">
-            <h3 class="">Přidat pojištění</h3>
+    <h3 class="">Přidat pojištění</h3>
     <form>
-    <div class="container">
-  <br />
-    <div class="row">
-        <div class='col-sm-3'>
-            <div class="form-group">
-              <div class="input-group date" data-provide="datepicker">
-                  <input type="text" class="form-control">
-                  <div class="input-group-addon">
-                      <span class="glyphicon glyphicon-th"></span>
-                  </div>
-              </div>
+        <div class="container">
+            <br/>
+        </div>
+
+<div class="form-row">
+
+<div class="form-group col-md-12">
+       <label for="sel1">Pojištění:</label>
+      <select name="typ_pojisteni" class="custom-select form-control" id="sel1" placeholder="Vyberte typ pojištění" required>
+    <option selected disabled>Vyberte typ pojištění</option>
+    <option value="auto">auto</option>
+    <option value="motorka">motorka</option>
+    <option value="byt">byt</option>
+  </select>
+</div>
+
+    </div>
+
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Částka</label>
+                <input type="text" name="castka_pojisteni" class="form-control" id="inputEmail4" placeholder="Částka" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Předmět pojištění</label>
+                <input type="text" name="predmet_pojisteni" class="form-control" id="inputPassword4"
+                       placeholder="Předmět pojištění">
             </div>
         </div>
-    </div>
-</div>
-  <div class="form-row">
+
+        <div class="form-row">
+                        <div class="form-group col-md-6">
+                   <label for="inputAddress1">Platnost od</label>
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" name="platnost_od" placeholder="dd.mm.yyyy" id="inputAddress1" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+
+            <div class="form-group col-md-6">
+                   <label for="inputAddress2">Platnost do</label>
+                    <div class='input-group date' id='datetimepicker2'>
+                        <input type='text' class="form-control" name="platnost_do" placeholder="dd.mm.yyyy" id="inputAddress2" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
 
 
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Částka</label>
-      <input type="text" name="castka_pojisteni" class="form-control" id="inputEmail4" placeholder="Částka">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Předmět pojištění</label>
-      <input type="text" name="predmet_pojisteni" class="form-control" id="inputPassword4" placeholder="Předmět pojištění">
-    </div>
-  </div>
-  <div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputAddress">Platnost od</label>
-    <input type="email" name="platnost_od" class="form-control" id="inputAddress" placeholder="Platnost od">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputAddress2">Platnost do</label>
-    <input type="tel" name="platnost_do" class="form-control" id="inputAddress2" placeholder="Platnost do">
-  </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-    </div>
-  </div>
-    <div class="col-md-12">
-      <div class="article_wrapper">
-      <p><a href="#" class="btn btn-lg btn-primary" role="button">Uožit</a></p>
-      </div>
-    </div>
-</form>
+
+
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="article_wrapper">
+                <p><a href="#" class="btn btn-lg btn-primary" role="button">Uožit</a></p>
+            </div>
+        </div>
+    </form>
 </div>
 
 

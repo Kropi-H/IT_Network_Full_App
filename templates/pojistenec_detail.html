@@ -13,20 +13,20 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-                        <span class="col-sm-12"><h5>Jan Novák</h5></span>
+                        <span class="col-sm-12"><h5>{{ data['jmeno'] }} {{ data['prijmeni'] }}</h5></span>
                         <div class="col-md-4 col-sm-6 col-xs-12">
 
                             <ul>
-                                <li><span>Ve Svahu 3</span></li>
-                                <li><span>Praha 1</span></li>
-                                <li><span>100 00</span></li>
+                                <li><span>{{ data['adresa'] }}</span></li>
+                                <li><span>{{ data['mesto'] }}</span></li>
+                                <li><span>{{ data['psc'] }}</span></li>
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
 
                             <ul>
-                                <li><span>jan.novak@centrum.cz</span></li>
-                                <li><span>+420 704 782 806</span></li>
+                                <li><span>{{ data['email'] }}</span></li>
+                                <li><span>{{ data['telefon'] }}</span></li>
                             </ul>
                         </div>
                     </div>

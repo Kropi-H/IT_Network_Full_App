@@ -2,51 +2,53 @@
 
 {% block body %}
 <div class="container">
-            <h3 class="">Nový pojištěnec</h3>
-    <form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Jmeno</label>
-      <input type="text" name="first_name" class="form-control" id="inputEmail4" placeholder="Jméno">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Příjmení</label>
-      <input type="text" name="second_name" class="form-control" id="inputPassword4" placeholder="Příjmení">
-    </div>
-  </div>
-  <div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputAddress">Email</label>
-    <input type="email" name="email" class="form-control" id="inputAddress" placeholder="Email">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputAddress2">Telefon</label>
-    <input type="tel" name="telephone" class="form-control" id="inputAddress2" placeholder="+420 111 222 333">
-  </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Ulice a číslo popisné</label>
-      <input type="text" name="street" class="form-control" id="inputCity" placeholder="Ve Svahu 3">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputTown">Město</label>
-      <input type="text" name="town" class="form-control" id="inputTown" placeholder="Praha 1">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-    </div>
-    <div class="form-group col-md-2">
-    <label for="inputTown">PSČ</label>
-    <input type="text" name="psc" class="form-control" id="inputPsc" placeholder="123 45">
-    </div>
-  </div>
-    <div class="col-md-12">
-      <div class="article_wrapper">
-      <p><a href="#" class="btn btn-lg btn-primary" role="button">Uožit</a></p>
-      </div>
-    </div>
-</form>
+    <h3 class="">Nový pojištěnec</h3>
+
+    <form method="POST" action="{{ url_for('pojistenci_novy') }}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Jmeno</label>
+                <input type="text" name="first_name" class="form-control" id="inputEmail4" placeholder="Jméno">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Příjmení</label>
+                <input type="text" name="second_name" class="form-control" id="inputPassword4" placeholder="Příjmení">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Email</label>
+                <input type="email" name="email" class="form-control" id="inputAddress" placeholder="Email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress2">Telefon</label>
+                <input type="number" name="telephone" class="form-control" id="inputAddress2"
+                       placeholder="420111222333">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">Ulice a číslo popisné</label>
+                <input type="text" name="street" class="form-control" id="inputCity" placeholder="Ve Svahu 3">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputTown">Město</label>
+                <input type="text" name="town" class="form-control" id="inputTown" placeholder="Praha 1">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputTown">PSČ</label>
+                <input type="number" name="psc" class="form-control" id="inputPsc" placeholder="123 45">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="article_wrapper">
+              <button type="submit" class="btn btn-lg btn-primary" role="button">Uožit</button>
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}
