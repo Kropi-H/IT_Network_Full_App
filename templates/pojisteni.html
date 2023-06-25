@@ -3,32 +3,31 @@
 {% block body %}
 
 <div class="container">
-    <h3 class="">Přidat pojištění</h3>
-    <form>
+    <h3 class="">Přidat pojištění pro: {{ pojistenec['jmeno'] }} {{ pojistenec['prijmeni'] }}</h3>
+    <form method="POST" action="{{ url_for('pojistenci_detail', id=pojistenec['id']) }}">
         <div class="container">
             <br/>
         </div>
 
-<div class="form-row">
-
-<div class="form-group col-md-12">
-       <label for="sel1">Pojištění:</label>
-      <select name="typ_pojisteni" class="custom-select form-control" id="sel1" placeholder="Vyberte typ pojištění" required>
-    <option selected disabled>Vyberte typ pojištění</option>
-    <option value="auto">auto</option>
-    <option value="motorka">motorka</option>
-    <option value="byt">byt</option>
-  </select>
-</div>
-
-    </div>
-
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="sel1">Pojištění:</label>
+                <select name="typ_pojisteni" class="custom-select form-control" id="sel1"
+                        placeholder="Vyberte typ pojištění" required>
+                    <option selected disabled>Vyberte typ pojištění</option>
+                    {% for pojistka in pojisteni %}
+                    <option value="{{ pojistka['pojisteni'] }}">{{ pojistka['pojisteni'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
 
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputEmail4">Částka</label>
-                <input type="text" name="castka_pojisteni" class="form-control" id="inputEmail4" placeholder="Částka" required>
+                <label for="inputEmail4">Hodnota pojištění</label>
+                <input type="number" name="castka_pojisteni" class="form-control" id="inputEmail4" placeholder="Částka"
+                       required>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Předmět pojištění</label>
@@ -38,28 +37,27 @@
         </div>
 
         <div class="form-row">
-                        <div class="form-group col-md-6">
-                   <label for="inputAddress1">Platnost od</label>
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" name="platnost_od" placeholder="dd.mm.yyyy" id="inputAddress1" required>
-                        <span class="input-group-addon">
+            <div class="form-group col-md-6">
+                <label for="inputAddress1">Platnost od</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" name="platnost_od" placeholder="dd.mm.yyyy"
+                           id="inputAddress1" required>
+                    <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
-                    </div>
                 </div>
+            </div>
 
             <div class="form-group col-md-6">
-                   <label for="inputAddress2">Platnost do</label>
-                    <div class='input-group date' id='datetimepicker2'>
-                        <input type='text' class="form-control" name="platnost_do" placeholder="dd.mm.yyyy" id="inputAddress2" required>
-                        <span class="input-group-addon">
+                <label for="inputAddress2">Platnost do</label>
+                <div class='input-group date' id='datetimepicker2'>
+                    <input type='text' class="form-control" name="platnost_do" placeholder="dd.mm.yyyy"
+                           id="inputAddress2" required>
+                    <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
-                    </div>
                 </div>
-
-
-
+            </div>
 
 
         </div>
@@ -69,7 +67,7 @@
         </div>
         <div class="col-md-12">
             <div class="article_wrapper">
-                <p><a href="#" class="btn btn-lg btn-primary" role="button">Uožit</a></p>
+                <button class="btn btn-lg btn-primary" role="button">Uožit</button>
             </div>
         </div>
     </form>

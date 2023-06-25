@@ -41,6 +41,8 @@ def get_member(id):
             return redirect('/pojistenci')
         elif request.form['submit'] == 'edit':
             return redirect(url_for("pojistenec_update", id=id))
+        elif request.form['submit'] == 'add_pojisteni':
+            return redirect(url_for("pojisteni", id=id))
 
 @app.route('/pojistenec_update/<int:id>', methods=['POST', 'GET'])
 def pojistenec_update(id):
@@ -65,9 +67,16 @@ def pojistenec_update(id):
     return render_template('novy_pojistenec.html', page_title = 'Pojistenec {} úprava'.format(result['prijmeni']), edit_data = result, header=header)
 
 
-@app.route('/pojisteni')
-def pojisteni():
-    return render_template('pojisteni.html', page_title = 'Pojištění')
+@app.route('/pojisteni/<int:id>', methods=['POST', 'GET'])
+def pojisteni(id):
+    db = connect_db()
+    cur = db.execute('SELECT pojisteni FROM typ_pojisteni')
+    result = cur.fetchall()
+
+    cur_pojistenec = db.execute('SELECT id, jmeno, prijmeni FROM pojistenci WHERE id=?', [id])
+    result_pojistenec = cur_pojistenec.fetchone()
+
+    return render_template('pojisteni.html', page_title = 'Pojištění', pojisteni = result, pojistenec=result_pojistenec)
 
 @app.route('/oaplikaci')
 def oaplikaci():
