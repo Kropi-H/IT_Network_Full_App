@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Connect to the database
 def connect_db():
-    sql = sqlite3.connect('/home/honza/web_development/IT_Network_Full_App/pojisteni.db')
+    sql = sqlite3.connect('/home/honza/Dokumenty/Python_Flask_Udemy/IT_Network_ZP_Plna_verze/pojisteni.db')
     sql.row_factory = sqlite3.Row
     return sql
 
@@ -40,11 +40,30 @@ def get_member(id):
             db.commit()
             return redirect('/pojistenci')
         elif request.form['submit'] == 'edit':
-            redirect(url_for("pojistenec_update", id=id))
+            return redirect(url_for("pojistenec_update", id=id))
 
-@app.route('/pojistenec_update/<int:id>', methods=['POST'])
+@app.route('/pojistenec_update/<int:id>', methods=['POST', 'GET'])
 def pojistenec_update(id):
-    return '<h1>Upravíme {}</h1>'.format(id)
+    db = connect_db()
+    cur = db.execute('SELECT * FROM pojistenci WHERE id=?', [id])
+    result = cur.fetchone()
+    header = 'Úprava dat pojištěnce {}'.format(result['prijmeni'])
+
+    if request.method == 'POST':
+        id = id
+        jmeno = request.form['first_name']
+        prijmeni = request.form['second_name']
+        email = request.form['email']
+        telefon = request.form['telephone']
+        adresa = request.form['street']
+        mesto = request.form['town']
+        psc = request.form['psc']
+        db.execute('UPDATE pojistenci SET jmeno = ?, prijmeni = ?, email = ?, telefon = ?, adresa = ?, mesto = ?, psc = ?  WHERE id = ?',[jmeno, prijmeni, email, telefon, adresa, mesto, psc, id])
+        db.commit()
+        return redirect('/pojistenci')
+
+    return render_template('novy_pojistenec.html', page_title = 'Pojistenec {} úprava'.format(result['prijmeni']), edit_data = result, header=header)
+
 
 @app.route('/pojisteni')
 def pojisteni():
@@ -54,7 +73,7 @@ def pojisteni():
 def oaplikaci():
     return render_template('oaplikaci.html', page_title = 'O aplikaci')
 
-@app.route('/pojistenci/detail/<id>', methods = ['POST', 'GET'])
+@app.route('/pojistenci/detail/<int:id>', methods = ['POST', 'GET'])
 def pojistenci_detail(id):
     db=get_db()
     cur = db.execute('SELECT * FROM pojistenci WHERE id=?', [id])
@@ -65,6 +84,7 @@ def pojistenci_detail(id):
 def pojistenci_novy():
     db = get_db()
     if request.method == 'POST':
+
         jmeno = request.form['first_name']
         prijmeni = request.form['second_name']
         email = request.form['email']
@@ -72,11 +92,11 @@ def pojistenci_novy():
         adresa = request.form['street']
         mesto = request.form['town']
         psc = request.form['psc']
-
-        db.execute('INSERT INTO pojistenci (jmeno, prijmeni, email, adresa, mesto, psc, telefon, email) VALUES (?,?,?,?,?,?,?,?)',[jmeno, prijmeni, email, adresa, mesto, psc, telefon, email])
+        db.execute('INSERT INTO pojistenci (jmeno, prijmeni, email, adresa, mesto, psc, telefon, email) VALUES (?,?,?,?,?,?,?,?)',
+                [jmeno, prijmeni, email, adresa, mesto, psc, telefon, email])
         db.commit()
 
-    return render_template('novy_pojistenec.html', page_title = 'Nový pojištěnec', )
+    return render_template('novy_pojistenec.html', page_title = 'Nový pojištěnec', header = 'Nový pojištěnec')
 
 
 if __name__ == '__main__':
