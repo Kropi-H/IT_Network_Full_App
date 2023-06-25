@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, g, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
 
 # Connect to the database
 def connect_db():
-    sql = sqlite3.connect('/home/honza/Dokumenty/Python_Flask_Udemy/IT_Network_ZP_Plna_verze/pojisteni.db')
+    sql = sqlite3.connect('/home/honza/web_development/IT_Network_Full_App/pojisteni.db')
     sql.row_factory = sqlite3.Row
     return sql
 
@@ -29,13 +29,22 @@ def pojistenci():
     cur = db.execute('SELECT id, jmeno, prijmeni, mesto, adresa, psc FROM pojistenci')
     results = cur.fetchall()
 
+    return render_template('pojistenci.html', page_title = 'Pojištěnci', pojistenci = results)
+
+@app.route('/pojistenci/<int:id>', methods=['POST'])
+def get_member(id):
+    db = get_db()
     if request.method == 'POST':
         if request.form['submit'] == 'delete':
-            return '{}!'.format()
+            db.execute('DELETE FROM pojistenci WHERE id=?', [id])
+            db.commit()
+            return redirect('/pojistenci')
         elif request.form['submit'] == 'edit':
-            return 'Edit button!'
+            redirect(url_for("pojistenec_update", id=id))
 
-    return render_template('pojistenci.html', page_title = 'Pojištěnci', pojistenci = results)
+@app.route('/pojistenec_update/<int:id>', methods=['POST'])
+def pojistenec_update(id):
+    return '<h1>Upravíme {}</h1>'.format(id)
 
 @app.route('/pojisteni')
 def pojisteni():

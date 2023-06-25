@@ -25,10 +25,10 @@
       <td><a href="{{ url_for('pojistenci_detail', id= pojistenec.id) }}" name="id">{{ pojistenec.jmeno }} {{ pojistenec.prijmeni }}</a></td>
       <td>{{ pojistenec.mesto }}, {{ pojistenec.adresa }}, {{ pojistenec.psc }}</td>
       <td class="article_wrapper col-md-3">
-          <form method="post">
-          <button name="submit" class="btn btn-danger" value='delete' href="{{ url_for('pojistenci') }}" role="button">Odstranit</button>
-          <button name="submit" class="btn btn-warning" value='edit' href="#" role="button">Editovat</button>
-      </form>
+          <form method="post" action="{{ url_for('get_member', id=pojistenec.id) }}">
+          <button name="submit" class="btn btn-danger" value='delete' role="button">Odstranit</button>
+          <button name="submit" class="btn btn-warning" value='edit' role="button">Editovat</button>
+            </form>
       </td>
     </tr>
 {% endfor %}

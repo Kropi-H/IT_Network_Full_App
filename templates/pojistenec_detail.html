@@ -8,7 +8,7 @@
             <div class="profiles col-xs-8 col-xs-push-2  col-sm-10 col-sm-push-1 thumbnail">
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="row">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-responsive" />
+                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-responsive"/>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -33,51 +33,53 @@
 
                     <div class="top-buffer">
                         <span class=""><h4>Sjednaná pojištění</h4></span>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Pojištění</th>
-      <th scope="col">Částka</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="{{ url_for('pojistenci_detail', id=1) }}" name="id">Pojištění majetku</a></td>
-      <td>100 000,-Kč</td>
-      <td class="article_wrapper col-md-3">
-          <a class="btn btn-danger" href="#" role="button">Odstranit</a>
-          <a class="btn btn-warning" href="#" role="button">Editovat</a>
-      </td>
-    </tr>
-    <tr>
-      <td><a href="{{ url_for('pojistenci_detail', id=2) }}" name="id">Jacob</a></td>
-      <td>Thornton</td>
-      <td class="article_wrapper col-md-3">
-          <a class="btn btn-danger" href="#" role="button">Odstranit</a>
-          <a class="btn btn-warning" href="#" role="button">Editovat</a>
-      </td>
-    </tr>
-    <tr>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td class="article_wrapper col-md-3">
-          <a class="btn btn-danger" href="#" role="button">Odstranit</a>
-          <a class="btn btn-warning" href="#" role="button">Editovat</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">Pojištění</th>
+                                <th scope="col">Částka</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="{{ url_for('pojistenci_detail', id=1) }}" name="id">Pojištění majetku</a>
+                                </td>
+                                <td>100 000,-Kč</td>
+                                <td class="article_wrapper col-md-3">
+                                    <a class="btn btn-danger" href="#" role="button">Odstranit</a>
+                                    <a class="btn btn-warning" href="#" role="button">Editovat</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ url_for('pojistenci_detail', id=2) }}" name="id">Jacob</a></td>
+                                <td>Thornton</td>
+                                <td class="article_wrapper col-md-3">
+                                    <a class="btn btn-danger" href="#" role="button">Odstranit</a>
+                                    <a class="btn btn-warning" href="#" role="button">Editovat</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td class="article_wrapper col-md-3">
+                                    <a class="btn btn-danger" href="#" role="button">Odstranit</a>
+                                    <a class="btn btn-warning" href="#" role="button">Editovat</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                        <div class="col-md-12">
-      <div class="article_wrapper">
-      <button class="btn btn-primary" type="submit">Přidat pojištění</button>
-            <button class="btn btn-warning" type="submit">Editovat pojištěnce</button>
-            <button class="btn btn-danger" type="submit">Odstranit pojištěnce</button>
-      </div>
-    </div>
-
+                    <div class="col-md-12">
+                        <form method="post" action="{{ url_for('get_member', id=data['id']) }}">
+                        <div class="article_wrapper">
+                            <button name="submit" value='add_pojisteni' class="btn btn-primary" type="submit">Přidat pojištění</button>
+                            <button name="submit" value='edit' class="btn btn-warning" type="submit">Editovat pojištěnce</button>
+                            <button name="submit" value='delete' class="btn btn-danger" type="submit">Odstranit pojištěnce</button>
+                        </div>
+                        </form>
+                    </div>
 
 
                 </div>
