@@ -42,31 +42,17 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% for poj in pojisteni %}
                             <tr>
-                                <td><a href="{{ url_for('pojistenci_detail', id=1) }}" name="id">Pojištění majetku</a>
+                                <td><a href="{{ url_for('pojistenci_detail', id=poj['id']) }}" name="id">{{ poj['predmet_pojisteni'] }}</a>
                                 </td>
-                                <td>100 000,-Kč</td>
+                                <td>{{ poj['castka'] }},-Kč</td>
                                 <td class="article_wrapper col-md-3">
-                                    <a class="btn btn-danger" href="#" role="button">Odstranit</a>
-                                    <a class="btn btn-warning" href="#" role="button">Editovat</a>
+                                    <a class="btn btn-danger" href="{{ url_for('delete_pojisteni', id=poj['id'] ) }}" role="button">Odstranit</a>
+                                    <a class="btn btn-warning" href="{{ url_for('uprava_pojisteni', id=poj['id'] ) }}" role="button">Editovat</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td><a href="{{ url_for('pojistenci_detail', id=2) }}" name="id">Jacob</a></td>
-                                <td>Thornton</td>
-                                <td class="article_wrapper col-md-3">
-                                    <a class="btn btn-danger" href="#" role="button">Odstranit</a>
-                                    <a class="btn btn-warning" href="#" role="button">Editovat</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td class="article_wrapper col-md-3">
-                                    <a class="btn btn-danger" href="#" role="button">Odstranit</a>
-                                    <a class="btn btn-warning" href="#" role="button">Editovat</a>
-                                </td>
-                            </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>

@@ -4,7 +4,7 @@
 
 <div class="container">
     <h3 class="">Přidat pojištění pro: {{ pojistenec['jmeno'] }} {{ pojistenec['prijmeni'] }}</h3>
-    <form method="POST">
+    <form method="POST" >
         <div class="container">
             <br/>
         </div>
@@ -22,12 +22,14 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Hodnota pojištění</label>
-                <input type="number" name="castka" class="form-control" id="inputEmail4" placeholder="Částka" required>
+                <input type="number" name="castka" class="form-control" id="inputEmail4" placeholder="Částka"
+                       value="{{ pojistka['castka'] }}"
+                       required>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Předmět pojištění</label>
                 <input type="text" name="predmet_pojisteni" class="form-control" id="inputPassword4"
-                       placeholder="Předmět pojištění" >
+                       placeholder="Předmět pojištění" value="{{ pojistka['predmet_pojisteni'] }}">
             </div>
         </div>
         <div class="form-row">
@@ -35,7 +37,7 @@
                 <label for="inputAddress1">Platnost od</label>
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='text' class="form-control" name="platnost_od" placeholder="dd.mm.yyyy"
-                           id="inputAddress1" required>
+                           id="inputAddress1" required value="{{ pojistka['platnost_od'] }}">
                     <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -46,7 +48,7 @@
                 <label for="inputAddress2">Platnost do</label>
                 <div class='input-group date' id='datetimepicker2'>
                     <input type='text' class="form-control" name="platnost_do" placeholder="dd.mm.yyyy"
-                           id="inputAddress2" required >
+                           id="inputAddress2" required value="{{ pojistka['platnost_do'] }}">
                     <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -60,7 +62,7 @@
 
         <div class="col-md-12">
             <div class="article_wrapper">
-                <button name="submit" class="btn btn-lg btn-primary" role="button">Uožit</button>
+                <button name="submit" class="btn btn-lg btn-primary" role="button">Upravit</button>
             </div>
         </div>
     </form>
