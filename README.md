@@ -1,6 +1,6 @@
 
 Vítejte v aplikaci pojištěnců
-Vytvořeno jako závěrečná práce pro pro itnetwork autor: Jan Kropáček Repository pro tuto práci neleznete na mém githubu zde.
+Vytvořeno jako závěrečná práce pro pro itnetwork autor: Jan Kropáček Repository pro tuto práci neleznetena mém githubu.
 
 Cílem zadání bylo naprogramovat webovou aplikaci pro evidenci pojistných událostí.
 Minimální požadavky ke splnění práce
