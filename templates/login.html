@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container" style="display: flex; justify-content: center; align-items: center; height: 80vh">
+<form method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Uživatelské jméno</label>
+    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Uživatelské jméno">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Heslo</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Heslo">
+  </div>
+  <button type="submit" class="btn btn-primary">Prihlásit</button>
+</form>
+</div>
+
+{% endblock %}

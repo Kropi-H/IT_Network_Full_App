@@ -1,5 +1,35 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>O aplikaci ...</h1>
+<div class="container" style="display: flex; justify-content: center; align-items: center; height: 80vh">
+    <article>
+        <h1 class="greet">Vítejte v aplikaci pojištěnců</h1>
+        <h5><a href="https://www.itnetwork.cz/" target="_blank">Vytvořeno jako závěrečná práce pro pro itnetwork</a>
+            autor: <a href="mailto:kropacek.h@gmail.com">Jan Kropáček</a> Repository pro tuto práci neleznete na mém githubu <a href="https://github.com/Kropi-H/IT_Network_Full_App.git" target="_blank">zde</a>.</h5>
+        <p>Cílem zadání bylo naprogramovat webovou aplikaci pro evidenci pojistných událostí.</p>
+        <h4>Minimální požadavky ke splnění práce</h4>
+        <ul>
+            <li><h5>Aplikace obsahuje kompletní správu (CRUD) pojištěných (např. "Jan Novák") a jejich pojištění (např.
+                "pojištění bytu"):</h5></li>
+            <ul>
+                <li>Vytvoření pojištěného</li>
+                <li>Vytvoření pojištění</li>
+                <li>Zobrazení detailu pojištěného včetně jeho pojištění</li>
+                <li>Zobrazení detailu pojištění</li>
+                <li>Zobrazení seznamu pojištěných</li>
+                <li>Odstranění pojištěného včetně všech jeho pojištění</li>
+                <li>Odstranění pojištění</li>
+                <li>Editace pojištěného</li>
+                <li>Editace pojištění pojištěného</li>
+            </ul>
+            <li>Dané entity jsou uloženy v SQL databázi</li>
+            <li>Aplikace je naprogramována podle dobrých praktik a je plně responzivní</li>
+        </ul>
+    <h4>Pro vytvoření aplikace byl použig framework Flask a jeho moduly</h4>
+    <p>Aplikaci můžete začít procházet po <a href="{{ url_for('register') }}">registraci</a></p>
+        <p>Nebo po <a href="{{ url_for('login') }}">přihlášení</a> a použití uživatelského jména: <span class="cridentials">admin</span> a hesla: <span class="cridentials">admin</span></p>
+    </article>
+
+
+</div>
 {% endblock %}

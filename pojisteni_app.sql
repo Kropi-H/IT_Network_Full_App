@@ -23,3 +23,11 @@ create table pojisteni (
     id integer primary key autoincrement,
     predmet_pojisteni text not null
 );
+
+CREATE TABLE uzivatele (
+    id integer primary key autoincrement,
+    jmeno text not null,
+    password text not null,
+    user boolean not null,
+    admin boolean not null
+);

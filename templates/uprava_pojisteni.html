@@ -12,9 +12,11 @@
             <div class="form-group col-md-12">
                 <label for="sel1">Pojištění:</label>
                 <select name="pojisteni" class="custom-select form-control" id="sel1" required>
-                    <option selected disabled>Vyberte typ pojištění</option>
-                    {% for pojistka in pojisteni %}
-                    <option value="{{ pojistka['predmet_pojisteni'] }}">{{ pojistka['predmet_pojisteni'] }}</option>
+                    <option selected >{{ pojistka['typ_pojisteni'] }}</option>
+                    {% for poj in pojisteni %}
+                        {% if poj['predmet_pojisteni'] != pojistka['typ_pojisteni']  %}
+                    <option value="{{ pojistka['predmet_pojisteni'] }}">{{ poj['predmet_pojisteni'] }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>

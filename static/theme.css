@@ -4,7 +4,7 @@ html, body {
 
 .container, .row {
   height: 100%;
-  min-height: 100%;
+  min-height: 80%;
 }
 
 .greet{
@@ -45,6 +45,10 @@ background-color:none;
     .navbar .navbar-collapse {
         text-align: center;
     }
+}
+
+.cridentials {
+text-decoration:underline red;
 }
 
 .page-header {

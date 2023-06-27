@@ -15,7 +15,6 @@
                     <div class="row">
                         <span class="col-sm-12"><h5>{{ data['jmeno'] }} {{ data['prijmeni'] }}</h5></span>
                         <div class="col-md-4 col-sm-6 col-xs-12">
-
                             <ul>
                                 <li><span>{{ data['adresa'] }}</span></li>
                                 <li><span>{{ data['mesto'] }}</span></li>
@@ -23,30 +22,34 @@
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
-
                             <ul>
-                                <li><span>{{ data['email'] }}</span></li>
-                                <li><span>{{ data['telefon'] }}</span></li>
+                                <li><span><a href="mailto:{{ data['email'] }}">{{ data['email'] }}</a></span></li>
+                                <li><span><a href="tel:"{{ data['telefon'] }}">{{ data['telefon'] }}</a></span></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="top-buffer">
+                    <div class="top-buffer table-responsive">
                         <span class=""><h4>Sjednaná pojištění</h4></span>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-sm">
                             <thead>
                             <tr>
                                 <th scope="col">Pojištění</th>
+                                <th scope="col">Předmět pojištění</th>
                                 <th scope="col">Částka</th>
+                                <th scope="col">Pojištěno od</th>
+                                <th scope="col">Pojištěno do</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for poj in pojisteni %}
                             <tr>
-                                <td><a href="{{ url_for('pojistenci_detail', id=poj['id']) }}" name="id">{{ poj['predmet_pojisteni'] }}</a>
-                                </td>
+                                <td>{{ poj['typ_pojisteni'] }}</td>
+                                <td>{{ poj['predmet_pojisteni'] }}</td>
                                 <td>{{ poj['castka'] }},-Kč</td>
+                                <td>{{ poj['platnost_od'] }}</td>
+                                <td>{{ poj['platnost_do'] }}</td>
                                 <td class="article_wrapper col-md-3">
                                     <a class="btn btn-danger" href="{{ url_for('delete_pojisteni', id=poj['id'] ) }}" role="button">Odstranit</a>
                                     <a class="btn btn-warning" href="{{ url_for('uprava_pojisteni', id=poj['id'] ) }}" role="button">Editovat</a>

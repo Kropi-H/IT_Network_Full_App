@@ -3,7 +3,14 @@
 {% block body %}
 
 <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh">
-    <h1 class="greet">Vítejte v aplikaci pojištěnců ...</h1>
+    <article >
+        <div style="display:flex; justify-content:center">
+            <h1 class="greet">Vítejte v aplikaci pojištěnců ...</h1>
+        </div>
+        <div style="display:flex; justify-content:center">
+            <h5> Přejděte na stránku <a href="{{ url_for('oaplikaci') }}">O aplikaci ...</a></h5>
+        </div>
+    </article>
 </div>
 
 {% endblock %}
