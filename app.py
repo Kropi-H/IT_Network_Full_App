@@ -96,6 +96,9 @@ def get_member(id):
 
 @app.route('/pojistenec_update/<int:id>', methods=['POST', 'GET'])
 def pojistenec_update(id):
+    user = get_current_user()
+    if not user:
+        return redirect('/login')
     db = get_db()
     cur = db.execute('SELECT * FROM pojistenci WHERE id=?', [id])
     result = cur.fetchone()
@@ -114,7 +117,7 @@ def pojistenec_update(id):
         db.commit()
         return redirect(url_for('pojistenci_detail', id = id_user))
 
-    return render_template('novy_pojistenec.html', page_title = 'Pojistenec {} úprava'.format(result['prijmeni']), edit_data = result, header=header)
+    return render_template('novy_pojistenec.html', page_title = 'Pojistenec {} úprava'.format(result['prijmeni']), edit_data = result, header=header, user=user)
 
 
 @app.route('/pojisteni/<int:id>', methods=['POST', 'GET'])
