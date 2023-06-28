@@ -33,6 +33,9 @@ def delete_pojisteni(id):
 
 @app.route('/uprava_pojisteni/<int:id>', methods=['POST', 'GET'])
 def uprava_pojisteni(id):
+    user = get_current_user()
+    if not user:
+        return redirect('/login')
     db = get_db()
     if request.method == 'GET':
         cur = db.execute('SELECT * FROM pojistky WHERE id=?', [id])
@@ -44,7 +47,7 @@ def uprava_pojisteni(id):
         pojisteni_cur = db.execute('SELECT predmet_pojisteni FROM pojisteni')
         result_pojisteni = pojisteni_cur.fetchall() # List všech možných pojištění, které pojistitel nabízí
 
-        return render_template('uprava_pojisteni.html', pojistka = result, pojisteni = result_pojisteni, pojistenec = result_pojistenec)
+        return render_template('uprava_pojisteni.html', pojistka = result, pojisteni = result_pojisteni, pojistenec = result_pojistenec, user=user)
 
     elif request.method == 'POST':
         id_pojistky = id
@@ -62,7 +65,7 @@ def uprava_pojisteni(id):
         cur = db.execute('SELECT * FROM pojistky WHERE id=?', [id_pojistky])
         result = cur.fetchone()
 
-        return redirect(url_for('pojistenci_detail', id = result['id_pojistence']))
+        return redirect(url_for('pojistenci_detail', id = result['id_pojistence']), user=user)
 
 @app.route('/')
 def index():
@@ -148,7 +151,7 @@ def pojisteni(id):
 
         return redirect(url_for('pojistenci_detail', id = id_pojistence))
 
-    return render_template('pojisteni.html', page_title = 'Pojištění', pojisteni = result, pojistenec=result_pojistenec)
+    return render_template('pojisteni.html', page_title = 'Pojištění', pojisteni = result, pojistenec=result_pojistenec, user=user)
 
 @app.route('/oaplikaci')
 def oaplikaci():
